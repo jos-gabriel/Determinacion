@@ -14,6 +14,6 @@ public class DeterminacionLey97Model {
     private String mensajeSM;
     private String claveFundamentoSM;
     private String fundamentoSM;
-    private String claveObservacionsSM;
+    private String claveObservacionesSM;
     private String observacionesSM;
 }

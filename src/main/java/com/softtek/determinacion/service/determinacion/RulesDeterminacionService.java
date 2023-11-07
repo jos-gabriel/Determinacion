@@ -7,14 +7,17 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class RulesDeterminacionService {
 
     public boolean esElegibleParaEvaluacion(DeterminacionRequest request) {
-        return !request.getDetalleCertificacion().getIndicadorRJP();
+        !return request.getDetalleCertificacion().getIndicadorRJP();
     }
 
     public boolean tieneSuceptibilidadRJP(DeterminacionRequest request) {
@@ -114,6 +117,57 @@ public class RulesDeterminacionService {
         } else {
             return "cesantia";
         }
+    }
+
+
+    public int totalSemanasReconocidas(DeterminacionRequest request) {
+        return (
+                request.getDetalleCertificacion().getNumTotalSemRecoLey73() +
+                request.getDetalleCertificacion().getNumTotalSemRecoLey97()
+        );
+    }
+
+
+    public Map<Year, Integer> SEMANAS_REQUERIDAS = new HashMap<>();
+     {
+        SEMANAS_REQUERIDAS.put(Year.of(2021), 750);
+        SEMANAS_REQUERIDAS.put(Year.of(2022), 775);
+        SEMANAS_REQUERIDAS.put(Year.of(2023), 800);
+        SEMANAS_REQUERIDAS.put(Year.of(2024), 825);
+        SEMANAS_REQUERIDAS.put(Year.of(2025), 850);
+        SEMANAS_REQUERIDAS.put(Year.of(2026), 875);
+        SEMANAS_REQUERIDAS.put(Year.of(2027), 900);
+        SEMANAS_REQUERIDAS.put(Year.of(2028), 925);
+        SEMANAS_REQUERIDAS.put(Year.of(2029), 950);
+        SEMANAS_REQUERIDAS.put(Year.of(2030), 975);
+        SEMANAS_REQUERIDAS.put(Year.of(2031), 1000);
+    }
+
+    public boolean tieneDerechoPrestacionLey97(int semanasReconocidas) {
+        Year fechaActual = Year.now();
+        int anioActual = fechaActual.getValue();
+
+        for (Year anioCambio : SEMANAS_REQUERIDAS.keySet()) {
+            if (anioActual >= anioCambio.getValue()) {
+                int semanasRequeridas = SEMANAS_REQUERIDAS.get(anioCambio);
+
+                if (anioActual >= 2022) {
+                    int diferenciaAnios = anioActual - 2022;
+                    semanasRequeridas += diferenciaAnios * 25;
+                    if (semanasRequeridas > 1000) {
+                        semanasRequeridas = 1000;
+                    }
+
+                    return semanasReconocidas >= semanasRequeridas;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean noCumpleRequisitosRetiroTotalLey97(int semanasReconocidas, DeterminacionRequest request) {
+        return semanasReconocidas <= 1250 || request.getDetalleCertificacion().getTotalDiasRetiroTotal09() > 0;
     }
 
 }
