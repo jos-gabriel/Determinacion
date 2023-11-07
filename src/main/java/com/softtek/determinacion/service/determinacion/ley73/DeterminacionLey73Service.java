@@ -30,7 +30,7 @@ public class DeterminacionLey73Service {
 
         boolean retiroVejez = rules.pensionVejez(request);
 
-        if (!rules.esElegibleParaEvaluacion(request)) {
+        if (rules.esElegibleParaEvaluacion(request)) {
             if (retiroVejez) {
                 vejez.configurarRJPMensajeFundamento(ley73Model);
             } else {

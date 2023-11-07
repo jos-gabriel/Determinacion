@@ -17,7 +17,7 @@ import java.util.Map;
 public class RulesDeterminacionService {
 
     public boolean esElegibleParaEvaluacion(DeterminacionRequest request) {
-        !return request.getDetalleCertificacion().getIndicadorRJP();
+        return request.getDetalleCertificacion().getIndicadorRJP();
     }
 
     public boolean tieneSuceptibilidadRJP(DeterminacionRequest request) {
