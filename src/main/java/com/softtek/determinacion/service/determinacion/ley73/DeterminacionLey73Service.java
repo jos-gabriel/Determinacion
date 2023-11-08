@@ -1,7 +1,7 @@
 package com.softtek.determinacion.service.determinacion.ley73;
 
 import com.softtek.determinacion.model.request.DeterminacionRequest;
-import com.softtek.determinacion.model.response.ley73.DeterminacionLey73Model;
+import com.softtek.determinacion.model.response.DeterminacionLey73Model;
 import com.softtek.determinacion.service.determinacion.RulesDeterminacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

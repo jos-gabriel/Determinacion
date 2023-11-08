@@ -1,7 +1,7 @@
 package com.softtek.determinacion.service.determinacion.ley73;
 
 import com.softtek.determinacion.constant.Propiedades;
-import com.softtek.determinacion.model.response.ley73.DeterminacionLey73Model;
+import com.softtek.determinacion.model.response.DeterminacionLey73Model;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,4 +1,4 @@
-package com.softtek.determinacion.model.response.ley73;
+package com.softtek.determinacion.model.response;
 
 import lombok.Data;
 

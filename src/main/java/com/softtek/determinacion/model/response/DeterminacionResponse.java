@@ -1,7 +1,5 @@
 package com.softtek.determinacion.model.response;
 
-import com.softtek.determinacion.model.response.ley73.DeterminacionLey73Model;
-import com.softtek.determinacion.model.response.ley97.DeterminacionLey97Model;
 import lombok.Data;
 
 @Data
