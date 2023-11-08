@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ValidacionDatosRN003Service {
+public class ValidacionInputService {
 
     private final ValidacionDatosService validacionDatosService;
 
     @Autowired
-    public ValidacionDatosRN003Service(ValidacionDatosService validacionDatosService) {
+    public ValidacionInputService(ValidacionDatosService validacionDatosService) {
         this.validacionDatosService = validacionDatosService;
     }
     public void validarSolicitudRN003(DeterminacionRequest request) {
