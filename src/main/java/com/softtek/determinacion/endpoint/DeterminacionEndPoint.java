@@ -25,4 +25,5 @@ public class DeterminacionEndPoint {
     public Determinacion73y97Response determinar(@RequestBody DeterminacionRequest request) {
         return determinacionService.determinar(request);
     }
+
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MsgsCesantiaLey73Service {
+
     public void configurarRJPMensajeFundamento(DeterminacionLey73Model ley73Model) {
         ley73Model.setMensaje(Propiedades.C_V_RJP_MSG_73_97);
         ley73Model.setClaveFundamento(Propiedades.C_RJP_CVE_FUN_73);

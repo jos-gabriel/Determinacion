@@ -21,11 +21,11 @@ public class DeterminacionService {
 
     @Autowired
     public DeterminacionService(
-            DeterminacionLey73Service determinacionLey73Service,
-            DeterminacionLey97Service determinacionLey97Service,
-            ValidacionInputService validacionInputService,
-            ValidacionDatosLey73Service validacionLey73Service,
-            ValidacionDatosLey97Service validacionLey97Service
+        DeterminacionLey73Service determinacionLey73Service,
+        DeterminacionLey97Service determinacionLey97Service,
+        ValidacionInputService validacionInputService,
+        ValidacionDatosLey73Service validacionLey73Service,
+        ValidacionDatosLey97Service validacionLey97Service
     ) {
         this.determinacionLey73Service = determinacionLey73Service;
         this.determinacionLey97Service = determinacionLey97Service;
@@ -36,10 +36,12 @@ public class DeterminacionService {
 
     public Determinacion73y97Response determinar(DeterminacionRequest request) {
 
-        validacionInputService.validarSolicitudRN003(request);
+        validacionInputService.validacionInputService(request);
         validacionLey73Service.validarSolicitudLey73(request);
         validacionLey97Service.validarSolicitudLey97(request);
+
         Determinacion73y97Response response = new Determinacion73y97Response();
+
         response.setDeterminacionLey73Model(determinacionLey73Service.calcularDeterminacion(request));
         response.setDeterminacionLey97Model(determinacionLey97Service.calcularDeterminacion(request));
 

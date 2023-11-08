@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class DetalleCertificacion {
+
     private String edadAsegurado;
     private Boolean indicadorRJP;
     private Boolean indicadorSuceptibilidadRJP;
@@ -16,4 +17,5 @@ public class DetalleCertificacion {
     private Boolean indicadorConservacionDerVencidos;
     private Boolean identificadorReingreso26a29Semanas;
     private Boolean indentificadorReingreso52a54Semanas;
+
 }

@@ -98,9 +98,4 @@ public class ValidacionDatosService {
         }
     }
 
-    public String determinarRegimenPensionario(String nss) {
-        int yearAfiliacion = Integer.parseInt(nss.substring(2, 4));
-        return (yearAfiliacion < 97) ? "ley73" : "ley97";
-    }
-
 }

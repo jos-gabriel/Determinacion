@@ -13,7 +13,8 @@ public class ValidacionInputService {
     public ValidacionInputService(ValidacionDatosService validacionDatosService) {
         this.validacionDatosService = validacionDatosService;
     }
-    public void validarSolicitudRN003(DeterminacionRequest request) {
+    public void validacionInputService(DeterminacionRequest request) {
+
         validacionDatosService.validarCampoObligatorio(request.getId(), "id");
         validacionDatosService.validarCampoObligatorio(request.getNss(), "nss");
         validacionDatosService.validarCampoObligatorio(request.getIdDelServicio(), "idDelServicio");
@@ -33,8 +34,9 @@ public class ValidacionInputService {
         validacionDatosService.validarFormatoFecha(request.getFechaSiniestro(), "fechaSiniestro");
         validacionDatosService.validarFormatoNSS(request.getNss());
         validacionDatosService.validarFormatoCurp(request.getCurp());
+        validacionDatosService.coincideNSSyCURP(request.getNss(), request.getCurp());
         validacionDatosService.coincideFechaNacimientoyCURP(request.getCurp(), request.getFechaDeNacimiento());
         validacionDatosService.coincideNSSySubdelegacion(request.getNss(), request.getSubdelegacion());
-        validacionDatosService.coincideNSSyCURP(request.getNss(), request.getCurp());
+
     }
 }

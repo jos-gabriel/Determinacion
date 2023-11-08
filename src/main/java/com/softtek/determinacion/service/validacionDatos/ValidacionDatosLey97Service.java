@@ -15,6 +15,7 @@ public class ValidacionDatosLey97Service {
     }
 
     public void validarSolicitudLey97(DeterminacionRequest request) {
+
         validacionDatosService.validarCampoObligatorio(request.getPrestacionSolicitada(), "prestacionSolicitada");
         validacionDatosService.validarCampoObligatorio(request.getDetalleCertificacion().getEdadAsegurado(), "edadAsegurado");
         validacionDatosService.validarCampoObligatorio(request.getDetalleCertificacion().getNumTotalSemRecoLey73(), "numTotalSemRecoLey73");
@@ -29,5 +30,6 @@ public class ValidacionDatosLey97Service {
         validacionDatosService.validarFormatoNSS(request.getAseguradoSolicitud().getNss());
         validacionDatosService.igualdadNSS(request.getAseguradoSolicitud().getNss(), request.getNss());
         validacionDatosService.validarEdad(request.getDetalleCertificacion().getEdadAsegurado(), request.getFechaDeNacimiento(), request.getFechaSiniestro());
+
     }
 }

@@ -29,5 +29,6 @@ public class ValidacionDatosLey73Service {
         validacionDatosService.validarFormatoNSS(request.getAseguradoSolicitud().getNss());
         validacionDatosService.igualdadNSS(request.getAseguradoSolicitud().getNss(), request.getNss());
         validacionDatosService.validarEdad(request.getDetalleCertificacion().getEdadAsegurado(), request.getFechaDeNacimiento(), request.getFechaSiniestro());
+
     }
 }
