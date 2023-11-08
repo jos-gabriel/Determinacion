@@ -31,16 +31,16 @@ public class RulesDeterminacionService {
     }
 
     public boolean validarFechaBaja(DeterminacionRequest request) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
             Date fechaBajaAsegurado = sdf.parse(request.getAseguradoSolicitud().getFechaBaja());
-            Date datePeriodo1 = sdf.parse("01/01/0001");
-            Date datePeriodo2 = sdf.parse("31/12/9999");
+            Date datePeriodo1 = sdf.parse("0001-01-01");
+            Date datePeriodo2 = sdf.parse("9999-12-9999");
 
-            return !fechaBajaAsegurado.equals(datePeriodo1) && !fechaBajaAsegurado.equals(datePeriodo2);
+            return fechaBajaAsegurado.equals(datePeriodo1) && fechaBajaAsegurado.equals(datePeriodo2);
         } catch (ParseException e) {
-            throw new BadRequestException("Error al verificar la fecha");
+            throw new BadRequestException("Error al verificar la fecha de baja");
         }
     }
 
@@ -167,7 +167,7 @@ public class RulesDeterminacionService {
     }
 
     public boolean noCumpleRequisitosRetiroTotalLey97(int semanasReconocidas, DeterminacionRequest request) {
-        return semanasReconocidas <= 1250 || request.getDetalleCertificacion().getTotalDiasRetiroTotal09() > 0;
+        return semanasReconocidas < 1250 && request.getDetalleCertificacion().getTotalDiasRetiroTotal09() > 0;
     }
 
 }

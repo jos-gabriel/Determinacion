@@ -47,7 +47,7 @@ public class DeterminacionLey73Service {
             }
         }
 
-        if (!rules.esNoVigente(request) || !rules.validarFechaBaja(request)) {
+        if (!rules.esNoVigente(request) || rules.validarFechaBaja(request)) {
             if (retiroVejez) {
                 vejez.configurarAseguradoVigenteMensajeFundamento(ley73Model);
             }else {
